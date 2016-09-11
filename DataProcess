@@ -1,0 +1,58 @@
+rm(list = ls())
+#LOAD LIBRARIES#
+library(dplyr)
+library(data.table)
+#End Of Libs#
+
+
+setwd("E:\\Analytix\\Kaggle")
+data <- fread("people.csv")
+for (i in 6:12)
+{
+  data[,i] <- gsub("type ","",data[,i])
+}
+data$people_id <- gsub("ppl_","",data$people_id)
+data[,3] <- gsub("group ","",data[,3])
+data[,2] <- gsub("type ","",data[,2])
+data[,4] <- gsub("type ","",data[,4])
+data$char_10<- ifelse(data$char_10 == 'TRUE', 1,0)
+data$char_11<- ifelse(data$char_11 == 'TRUE', 1,0)
+data$char_12<- ifelse(data$char_12 == 'TRUE', 1,0)
+data$char_13<- ifelse(data$char_13 == 'TRUE', 1,0)
+data$char_14<- ifelse(data$char_14 == 'TRUE', 1,0)
+data$char_15<- ifelse(data$char_15 == 'TRUE', 1,0)
+data$char_16<- ifelse(data$char_16 == 'TRUE', 1,0)
+data$char_17<- ifelse(data$char_17 == 'TRUE', 1,0)
+data$char_18<- ifelse(data$char_18 == 'TRUE', 1,0)
+data$char_19<- ifelse(data$char_19 == 'TRUE', 1,0)
+data$char_20<- ifelse(data$char_20 == 'TRUE', 1,0)
+data$char_21<- ifelse(data$char_21 == 'TRUE', 1,0)
+data$char_22<- ifelse(data$char_22 == 'TRUE', 1,0)
+data$char_23<- ifelse(data$char_23 == 'TRUE', 1,0)
+data$char_24<- ifelse(data$char_24 == 'TRUE', 1,0)
+data$char_25<- ifelse(data$char_25 == 'TRUE', 1,0)
+data$char_26<- ifelse(data$char_26 == 'TRUE', 1,0)
+data$char_27<- ifelse(data$char_27 == 'TRUE', 1,0)
+data$char_28<- ifelse(data$char_28 == 'TRUE', 1,0)
+data$char_29<- ifelse(data$char_29 == 'TRUE', 1,0)
+data$char_30<- ifelse(data$char_30 == 'TRUE', 1,0)
+data$char_31<- ifelse(data$char_31 == 'TRUE', 1,0)
+data$char_32<- ifelse(data$char_32 == 'TRUE', 1,0)
+data$char_33<- ifelse(data$char_33 == 'TRUE', 1,0)
+data$char_34<- ifelse(data$char_34 == 'TRUE', 1,0)
+data$char_35<- ifelse(data$char_35 == 'TRUE', 1,0)
+data$char_36<- ifelse(data$char_36 == 'TRUE', 1,0)
+data$char_37<- ifelse(data$char_37 == 'TRUE', 1,0)
+
+data <- arrange(data, people_id)
+
+data$date <- as.Date(data$date)
+
+df <- data
+
+for(i in 6:NCOL(data))
+{
+  data[[i]] <- as.numeric(data[[i]]) 
+}
+
+sapply(data, mode)
